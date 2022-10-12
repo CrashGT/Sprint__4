@@ -28,7 +28,6 @@ public class TestQuestionsAboutImportantTexts {
 
     @Parameterized.Parameters
     public static Object[][] getCities() {
-        //Сгенерируй тестовые данные (нам нужно название городов и результат поиска)
         return new Object[][]{
                 {questionLocator[0], questionText[0], textLocator[0]},
                 {questionLocator[1], questionText[1], textLocator[1] },
