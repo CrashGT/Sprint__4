@@ -14,19 +14,19 @@ public class OrderForWhomPage {
         this.driver = driver;
     }
 
-    public By nameOrder = By.xpath(".//input[@placeholder='* Имя']"); //Поле Имя
-    public By surnameOrder = By.xpath(".//input[@placeholder='* Фамилия']"); //Поле Фамилия
-    public By addressOrder = By.xpath(".//input[@placeholder='* Адрес: куда привезти заказ']"); // Поле Адрес
-    public By stationOrder = By.xpath(".//input[@placeholder='* Станция метро']"); //Поле Метро
-    public By telephoneOrder = By.xpath(".//input[@placeholder='* Телефон: на него позвонит курьер']"); //Поле телефон
-    public By nextOrderButton = By.xpath(".//button[@class ='Button_Button__ra12g Button_Middle__1CSJM']"); //Кнопка Далее
-    public By whenOrder = By.xpath(".//input[@placeholder='* Когда привезти самокат']"); //Дата заказа
-    public By dateOrder = By.xpath(".//div[contains(@class, 'react-datepicker__day') and (@tabindex='0')]"); //Активная дата в календаре
-    public By dateNextMonthOrder = By.xpath(".//button[@aria-label ='Next Month']"); //Переход на следующий месяц
-    public By periodOrder = By.className("Dropdown-placeholder"); //Срок аренды
+    public By nameOrder = By.xpath(".//input[@placeholder='* Имя']"); 
+    public By surnameOrder = By.xpath(".//input[@placeholder='* Фамилия']"); 
+    public By addressOrder = By.xpath(".//input[@placeholder='* Адрес: куда привезти заказ']"); 
+    public By stationOrder = By.xpath(".//input[@placeholder='* Станция метро']"); 
+    public By telephoneOrder = By.xpath(".//input[@placeholder='* Телефон: на него позвонит курьер']"); 
+    public By nextOrderButton = By.xpath(".//button[@class ='Button_Button__ra12g Button_Middle__1CSJM']"); 
+    public By whenOrder = By.xpath(".//input[@placeholder='* Когда привезти самокат']"); 
+    public By dateOrder = By.xpath(".//div[contains(@class, 'react-datepicker__day') and (@tabindex='0')]"); 
+    public By dateNextMonthOrder = By.xpath(".//button[@aria-label ='Next Month']"); 
+    public By periodOrder = By.className("Dropdown-placeholder"); 
     public By commentOrder = By.xpath(".//input[@placeholder='Комментарий для курьера']");
-    public By yesButton = By.xpath(".//button[(@class = 'Button_Button__ra12g Button_Middle__1CSJM' and (text()='Да'))]"); //Да в всплывающем диалоге
-    public By finishModalWindow = By.xpath(".//div[@class = 'Order_ModalHeader__3FDaJ']"); //Заказ оформлен
+    public By yesButton = By.xpath(".//button[(@class = 'Button_Button__ra12g Button_Middle__1CSJM' and (text()='Да'))]"); 
+    public By finishModalWindow = By.xpath(".//div[@class = 'Order_ModalHeader__3FDaJ']"); 
 
 
     public void clickOnOrderButton(By buttonOrder) {
@@ -45,27 +45,27 @@ public class OrderForWhomPage {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", desiredElement);
     }
 
-    public void setField(By field, String str) { //метод заполнения поля
+    public void setField(By field, String str) { 
         driver.findElement(field).sendKeys(str);
     }
 
-    public void setStationOrder(By station) {   //метод выбора станции метро
+    public void setStationOrder(By station) {   
         driver.findElement(stationOrder).click();
         driver.findElement(station).click();
     }
 
     public void setOrderForWhom(String name, String surname, String address, String number) {
-        setField(nameOrder, name); //Заполняем Имя
-        setField(surnameOrder, surname); // Заполняем Фамилию
-        setField(addressOrder, address); //Заполняем Адресс
-        setField(telephoneOrder, number); //Заполняем Номер
+        setField(nameOrder, name); 
+        setField(surnameOrder, surname); 
+        setField(addressOrder, address); 
+        setField(telephoneOrder, number); 
     }
 
-    public void clickNextOrderButton() {    //Нажимаем на кнопку Далее
+    public void clickNextOrderButton() {    
         driver.findElement(nextOrderButton).click();
     }
 
-    public void setNextMonthDateButton(int month) {  //Выбираем n-ый месяц
+    public void setNextMonthDateButton(int month) {  
         driver.findElement(whenOrder).click();
         for (int j = 0; j < month; j++) {
             driver.findElement(dateNextMonthOrder).click();
@@ -73,24 +73,24 @@ public class OrderForWhomPage {
         driver.findElement(dateOrder).click();
     }
 
-    public void setPeriod(int period) { //Выбираем период аренды
+    public void setPeriod(int period) { 
         driver.findElement(periodOrder).click();
         driver.findElement(By.xpath(".//div[@class='Dropdown-option'][" + period + "]")).click();
     }
 
-    public void setColorScooter(By color) { //Выбираем цвета самоката
+    public void setColorScooter(By color) { 
         driver.findElement(color).click();
     }
 
-    public void setComment(String comment) { //Пишем комментарий
+    public void setComment(String comment) {
         driver.findElement(commentOrder).sendKeys(comment);
     }
 
-    public void yesButtonClick() {  //Да, хотим оформить
+    public void yesButtonClick() {  
         driver.findElement(yesButton).click();
     }
 
-    public String getTextOfWindowOfSuccessfulOrder() { //Ищем текст успешного завершения
+    public String getTextOfWindowOfSuccessfulOrder() { 
         return driver.findElement(finishModalWindow).getText();
     }
 }
