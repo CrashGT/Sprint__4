@@ -15,16 +15,16 @@ public class MainPage {
     }
 
     private String domen = "https://qa-scooter.praktikum-services.ru/";
-    public void openDomen() {  //Открываем сайт
+    public void openDomen() {  
         driver.get(domen);
     }
 
-    public void scrollToElement(By element) { //скроллим до необходимого элемента
+    public void scrollToElement(By element) { 
         WebElement desiredElement = driver.findElement(element);
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", desiredElement);
     }
 
-    public void standBy(By element) { //Ожидание
+    public void standBy(By element) { 
         new WebDriverWait(driver, 10)
                 .until(ExpectedConditions.presenceOfElementLocated(element));
     }
